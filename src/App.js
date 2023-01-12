@@ -26,6 +26,8 @@ const clearChats=()=>{
   setChatLog([])
 }
 
+
+
 const getEngines=()=>{
   fetch("http://localhost:3080/models")
   .then(res=>res.json())
@@ -51,11 +53,10 @@ const handleSubmit= async (e)=>{
 
 const messages=chatLogNew.map((message) => message.message).join("\n")
 
-const response=await fetch('http://localhost:3080/',{
+const response=await fetch('http://localhost:3080', {
   method:'POST',
   headers:{
     "Content-Type":"application/json"
-    
   },
   body: JSON.stringify({
     message:messages,
@@ -66,10 +67,7 @@ const response=await fetch('http://localhost:3080/',{
 const data=await response.json()
 setChatLog([...chatLogNew,{user:'gpt',message:`${data.message}`}])
 console.log(data.message)
-  // const response=await openai.createCompletion({
-
-  // })
-}
+  }
 
   return (
     <div className="App">
@@ -82,9 +80,11 @@ console.log(data.message)
           <select onChange={(e)=>{
             setCurrentModel(e.target.value)
           }}>
-            {models&& models.map((model,index)=>(
+            
+            {models&&models.map((model,index)=>(
               <option key={model.id} value={model.id}>{model.id}</option>
             ))}
+            
           </select>
         </div>
       </aside>
@@ -93,15 +93,8 @@ console.log(data.message)
           {chatLog.map((message,index)=>(
                <ChatMessage key={index} message={message} />
           ))}
-         
-
-         
-          
-          
-        </div>
-
-
-        <div className="chat-input-holder">
+         </div>
+<div className="chat-input-holder">
           <form onSubmit={handleSubmit}>
           <input
           rows="1"

@@ -107,6 +107,17 @@ border-radius: 50%;
 width: 40px;
 height:40px;
 }
+select{
+  width:230px;
+}
+option{
+  width: 230px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+.options{
+  background-color: #40414f;
+}
 
 .avatar.chatgpt{
   background-color: aquamarine ;
