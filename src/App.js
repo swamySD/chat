@@ -65,6 +65,8 @@ const response=await fetch('http://localhost:3080', {
   })
 })
 
+console.log("Hi")
+
 const data=await response.json()
 setChatLog([...chatLogNew,{user:'gpt',message:`${data.message}`}])
 console.log(data.message)
